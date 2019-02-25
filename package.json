@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "precommit": "lint-staged",
-    "build": "shx rm -rf dist && tsc -p tsconfig.json"
+    "build": "shx rm -rf dist && tsc -p tsconfig.json",
+    "prepublish": "npm run build"
   },
   "repository": {
     "type": "git",
