@@ -1,0 +1,27 @@
+{
+  "name": "nestjs-algolia",
+  "version": "0.0.0",
+  "description": "The algolia NestJS module based on the official aloglia package",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fvilers/nestjs-algolia.git"
+  },
+  "keywords": [
+    "nestjs",
+    "nest",
+    "nodejs",
+    "typescript",
+    "algolia",
+    "algolia-search"
+  ],
+  "author": "Fabian Vilers <fabian.vilers@dev-one.com> (https://www.dev-one.com/)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/fvilers/nestjs-algolia/issues"
+  },
+  "homepage": "https://github.com/fvilers/nestjs-algolia#readme"
+}
