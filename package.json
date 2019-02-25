@@ -1,6 +1,6 @@
 {
   "name": "nestjs-algolia",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "The algolia NestJS module based on the official aloglia package",
   "main": "index.js",
   "scripts": {
