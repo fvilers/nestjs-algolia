@@ -1,6 +1,6 @@
 # nestjs-algolia
 
-The algolia NestJS module based on the official aloglia package
+The algolia NestJS module based on the official algolia package
 
 ## How to install
 
