@@ -1,12 +1,12 @@
-import { Module, DynamicModule, Provider } from '@nestjs/common';
-import { AlgoliaService } from './algolia.service';
+import { DynamicModule, Module, Provider } from '@nestjs/common';
 import {
-  AlgoliaModuleOptions,
   AlgoliaModuleAsyncOptions,
+  AlgoliaModuleOptions,
   AlgoliaOptionsFactory,
 } from './algolia-module-options';
-import { createAlgoliaClient } from './algolia-client.provider';
 import { ALGOLIA_MODULE_OPTIONS } from './algolia.constants';
+import { createAlgoliaProvider } from './algolia-client.provider';
+import { AlgoliaService } from './algolia.service';
 
 @Module({
   providers: [AlgoliaService],
@@ -16,10 +16,7 @@ export class AlgoliaModule {
   static register(options: AlgoliaModuleOptions): DynamicModule {
     return {
       module: AlgoliaModule,
-      providers: [
-        createAlgoliaClient(),
-        { provide: ALGOLIA_MODULE_OPTIONS, useValue: options },
-      ],
+      providers: createAlgoliaProvider(options),
     };
   }
 
@@ -27,7 +24,7 @@ export class AlgoliaModule {
     return {
       module: AlgoliaModule,
       imports: options.imports || [],
-      providers: [createAlgoliaClient(), ...this.createAsyncProviders(options)],
+      providers: this.createAsyncProviders(options),
     };
   }
 

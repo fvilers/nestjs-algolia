@@ -3,5 +3,10 @@
     "node_modules": true,
     "package-lock.json": true,
     "dist": true
-  }
+  },
+  "cSpell.words": [
+    "algolia",
+    "algoliasearch",
+    "nestjs"
+  ]
 }

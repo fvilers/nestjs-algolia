@@ -1,22 +1,35 @@
-import { Injectable, Inject } from '@nestjs/common';
-import { ALGOLIA_CLIENT } from './algolia.constants';
+import { Inject, Injectable } from '@nestjs/common';
+import * as algoliasearch from 'algoliasearch';
 import {
-  Client,
-  Index,
-  QueryParameters,
-  MultiResponse,
-  SearchForFacetValues,
-  Task,
-  SecuredApiOptions,
   Action,
   ApiKeyOptions,
-  LogsOptions,
+  Client,
+  Index,
   Log,
+  LogsOptions,
+  MultiResponse,
+  QueryParameters,
+  SearchForFacetValues,
+  SecuredApiOptions,
+  Task,
 } from 'algoliasearch';
+import { AlgoliaModuleOptions } from './algolia-module-options';
+import { ALGOLIA_MODULE_OPTIONS } from './algolia.constants';
 
 @Injectable()
 export class AlgoliaService {
-  constructor(@Inject(ALGOLIA_CLIENT) private readonly algoliaClient: Client) {}
+  private readonly algoliaClient: Client;
+
+  constructor(
+    @Inject(ALGOLIA_MODULE_OPTIONS)
+    private readonly options: AlgoliaModuleOptions,
+  ) {
+    this.algoliaClient = algoliasearch(
+      options.applicationId,
+      options.apiKey,
+      options.clientOptions,
+    );
+  }
 
   /**
    * Initialization of the index
