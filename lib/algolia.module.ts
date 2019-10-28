@@ -10,7 +10,7 @@ import { AlgoliaService } from './algolia.service';
 
 @Module({
   providers: [AlgoliaService],
-  exports: [AlgoliaService],
+  exports: [ALGOLIA_MODULE_OPTIONS, AlgoliaService],
 })
 export class AlgoliaModule {
   static register(options: AlgoliaModuleOptions): DynamicModule {
