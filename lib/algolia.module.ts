@@ -6,12 +6,8 @@ import {
   AlgoliaOptionsFactory,
 } from './algolia-module-options';
 import { ALGOLIA_MODULE_OPTIONS } from './algolia.constants';
-import { AlgoliaService } from './algolia.service';
 
-@Module({
-  providers: [AlgoliaService],
-  exports: [AlgoliaService],
-})
+@Module({})
 export class AlgoliaModule {
   static register(options: AlgoliaModuleOptions): DynamicModule {
     return {
