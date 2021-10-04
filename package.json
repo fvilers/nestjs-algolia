@@ -4,9 +4,10 @@
   "description": "The algolia NestJS module based on the official aloglia package",
   "main": "index.js",
   "scripts": {
-    "precommit": "lint-staged",
+    "prepare": "husky install",
     "build": "shx rm -rf dist && tsc -p tsconfig.json",
-    "prepublish": "npm run build"
+    "prepublish": "npm run build",
+    "test": "jest"
   },
   "repository": {
     "type": "git",
@@ -27,26 +28,36 @@
   },
   "homepage": "https://github.com/fvilers/nestjs-algolia#readme",
   "peerDependencies": {
-    "@nestjs/common": "^5.0.0"
+    "@nestjs/common": "^8.0.0"
   },
   "devDependencies": {
-    "@nestjs/common": "^5.0.0",
+    "@nestjs/common": "^8.0.9",
+    "@nestjs/core": "^8.0.9",
+    "@nestjs/testing": "^8.0.9",
     "@types/algoliasearch": "3.30.5",
+    "@types/jest": "^27.0.2",
     "@types/node": "11.9.5",
-    "husky": "1.3.1",
-    "lint-staged": "8.1.4",
-    "prettier": "1.16.4",
-    "reflect-metadata": "0.1.12",
-    "shx": "0.3.2",
-    "typescript": "3.3.3333"
+    "husky": "^7.0.2",
+    "jest": "^27.2.4",
+    "lint-staged": "^11.1.2",
+    "prettier": "^2.4.1",
+    "reflect-metadata": "^0.1.13",
+    "rxjs": "^7.3.1",
+    "shx": "^0.3.3",
+    "ts-jest": "^27.0.5",
+    "typescript": "^4.4.3"
   },
   "lint-staged": {
     "*.ts": [
-      "prettier --write",
-      "git add"
+      "prettier --write"
     ]
   },
   "dependencies": {
     "algoliasearch": "3.32.0"
+  },
+  "jest": {
+    "preset": "ts-jest",
+    "collectCoverage": true,
+    "testEnvironment": "node"
   }
 }
