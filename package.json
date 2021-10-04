@@ -28,13 +28,13 @@
   },
   "homepage": "https://github.com/fvilers/nestjs-algolia#readme",
   "peerDependencies": {
+    "algoliasearch": "^4.0.0",
     "@nestjs/common": "^8.0.0"
   },
   "devDependencies": {
     "@nestjs/common": "^8.0.9",
     "@nestjs/core": "^8.0.9",
     "@nestjs/testing": "^8.0.9",
-    "@types/algoliasearch": "3.30.5",
     "@types/jest": "^27.0.2",
     "@types/node": "11.9.5",
     "husky": "^7.0.2",
@@ -51,9 +51,6 @@
     "*.ts": [
       "prettier --write"
     ]
-  },
-  "dependencies": {
-    "algoliasearch": "3.32.0"
   },
   "jest": {
     "preset": "ts-jest",

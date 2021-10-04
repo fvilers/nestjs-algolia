@@ -11,22 +11,20 @@ If you use and like this library, feel free to support my Open Source projects.
 ## How to install
 
 ```
-npm install nestjs-algolia
-npm install --save-dev @types/algoliasearch
+npm install nestjs-algolia algoliasearch
 ```
 
 or
 
 ```
-yarn add nestjs-algolia
-yarn add -D @types/algoliasearch
+yarn add nestjs-algolia algoliasearch
 ```
 
 ## How to use
 
 **Register the module**
 
-```
+```typescript
 import { AlgoliaModule } from 'nestjs-algolia';
 
 @Module({
@@ -42,18 +40,19 @@ export class AppModule {}
 
 **Inject the service**
 
-```
-import { AlgoliaService } from 'nestjs-algolia';
+```typescript
+import { AlgoliaService, ALGOLIA_CLIENT } from 'nestjs-algolia';
+import type { SearchClient } from 'algoliasearch';
 
 @Injectable()
 export class AppService {
-  constructor(private readonly algoliaService: AlgoliaService) {}
+  constructor(@Inject(ALGOLIA_CLIENT) private readonly algoliaClient: SearchClient) {}
 
   addRecordToIndex(
     indexName: string,
     record: any,
   ): Promise<algoliasearch.Task> {
-    const index = this.algoliaService.initIndex(indexName);
+    const index = this.algoliaClient.initIndex(indexName);
 
     return index.addObject(record);
   }
@@ -66,7 +65,8 @@ Quite often you might want to asynchronously pass your module options instead of
 
 ### Use factory
 
-```
+```typescript
+import { AlgoliaModule } from 'nestjs-algolia';
 AlgoliaModule.registerAsync({
   useFactory: () => ({
     applicationId: 'YOUR_APPLICATION_ID',
@@ -77,7 +77,8 @@ AlgoliaModule.registerAsync({
 
 Obviously, our factory behaves like every other one (might be `async` and is able to inject dependencies through `inject`).
 
-```
+```typescript
+import { AlgoliaModule } from 'nestjs-algolia';
 AlgoliaModule.registerAsync({
   imports: [ConfigModule],
   useFactory: async (configService: ConfigService) => ({
@@ -90,7 +91,8 @@ AlgoliaModule.registerAsync({
 
 ### Use class
 
-```
+```typescript
+import { AlgoliaModule } from 'nestjs-algolia';
 AlgoliaModule.registerAsync({
   useClass: AlgoliaConfigService,
 });
@@ -98,7 +100,7 @@ AlgoliaModule.registerAsync({
 
 Above construction will instantiate `AlgoliaConfigService` inside `AlgoliaModule` and will leverage it to create options object.
 
-```
+```typescript
 class AlgoliaConfigService implements AlgoliaOptionsFactory {
   createAlgoliaOptions(): AlgoliaModuleOptions {
     return {
@@ -111,7 +113,8 @@ class AlgoliaConfigService implements AlgoliaOptionsFactory {
 
 ### Use existing
 
-```
+```typescript
+import { AlgoliaModule } from 'nestjs-algolia';
 AlgoliaModule.registerAsync({
   imports: [ConfigModule],
   useExisting: ConfigService,

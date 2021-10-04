@@ -1,12 +1,11 @@
 import { ModuleMetadata, Type } from '@nestjs/common/interfaces';
-import { ClientOptions } from 'algoliasearch';
+import type { AlgoliaSearchOptions } from 'algoliasearch';
 
 export interface AlgoliaModuleOptions {
-  applicationId: string;
+  appId: string;
   apiKey: string;
-  clientOptions?: ClientOptions;
+  options: AlgoliaSearchOptions;
 }
-
 export interface AlgoliaOptionsFactory {
   createAlgoliaOptions(): Promise<AlgoliaModuleOptions> | AlgoliaModuleOptions;
 }
