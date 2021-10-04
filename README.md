@@ -41,12 +41,12 @@ export class AppModule {}
 **Inject the service**
 
 ```typescript
-import { AlgoliaService, ALGOLIA_CLIENT } from 'nestjs-algolia';
+import { AlgoliaService, InjectAlgoliaClient } from 'nestjs-algolia';
 import type { SearchClient } from 'algoliasearch';
 
 @Injectable()
 export class AppService {
-  constructor(@Inject(ALGOLIA_CLIENT) private readonly algoliaClient: SearchClient) {}
+  constructor(@InjectAlgoliaClient() private readonly algoliaClient: SearchClient) {}
 
   addRecordToIndex(
     indexName: string,

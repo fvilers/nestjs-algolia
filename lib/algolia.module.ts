@@ -10,20 +10,24 @@ import { ALGOLIA_MODULE_OPTIONS } from './algolia.constants';
 @Module({})
 export class AlgoliaModule {
   static register(options: AlgoliaModuleOptions): DynamicModule {
+    const provider = createAlgoliaClient();
     return {
       module: AlgoliaModule,
       providers: [
-        createAlgoliaClient(),
+        provider,
         { provide: ALGOLIA_MODULE_OPTIONS, useValue: options },
       ],
+      exports: [provider],
     };
   }
 
   static registerAsync(options: AlgoliaModuleAsyncOptions): DynamicModule {
+    const provider = createAlgoliaClient();
     return {
       module: AlgoliaModule,
       imports: options.imports || [],
-      providers: [createAlgoliaClient(), ...this.createAsyncProviders(options)],
+      providers: [provider, ...this.createAsyncProviders(options)],
+      exports: [provider],
     };
   }
 
