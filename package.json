@@ -6,7 +6,7 @@
   "scripts": {
     "precommit": "lint-staged",
     "build": "shx rm -rf dist && tsc -p tsconfig.json",
-    "prepublish": "npm run build"
+    "prepare": "npm run build"
   },
   "repository": {
     "type": "git",
