@@ -1,12 +1,12 @@
-import { Module, DynamicModule, Provider } from '@nestjs/common';
-import { AlgoliaService } from './algolia.service';
+import { DynamicModule, Module, Provider } from '@nestjs/common';
+import { createAlgoliaClient } from './algolia-client.provider';
 import {
-  AlgoliaModuleOptions,
   AlgoliaModuleAsyncOptions,
+  AlgoliaModuleOptions,
   AlgoliaOptionsFactory,
 } from './algolia-module-options';
-import { createAlgoliaClient } from './algolia-client.provider';
 import { ALGOLIA_MODULE_OPTIONS } from './algolia.constants';
+import { AlgoliaService } from './algolia.service';
 
 @Module({
   providers: [AlgoliaService],

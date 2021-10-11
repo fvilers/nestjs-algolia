@@ -119,3 +119,12 @@ AlgoliaModule.registerAsync({
 ```
 
 It works the same as `useClass` with one critical difference - `AlgoliaModule` will lookup imported modules to reuse already created `ConfigService`, instead of instantiating it on its own.
+
+## Versions
+
+Use the following table to match this module with the NestJS version
+
+| nestjs-algolia | nestjs |
+| -------------- | ------ |
+| 1.x            | 5.x    |
+| 2.x            | 6.x    |
