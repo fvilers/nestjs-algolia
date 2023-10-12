@@ -1,7 +1,7 @@
 {
   "name": "nestjs-algolia",
   "version": "4.0.0",
-  "description": "The algolia NestJS module based on the official aloglia package",
+  "description": "The algolia NestJS module based on the official algolia package",
   "main": "index.js",
   "scripts": {
     "precommit": "lint-staged",
