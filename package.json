@@ -32,8 +32,8 @@
   },
   "devDependencies": {
     "@nestjs/common": "^10.2.8",
-    "@nestjs/core": "^9.0.5",
-    "@nestjs/testing": "^10.2.8",
+    "@nestjs/core": "^11.1.18",
+    "@nestjs/testing": "^11.1.18",
     "@types/algoliasearch": "3.30.5",
     "@types/jest": "^27.0.2",
     "@types/node": "^14.0.0",
